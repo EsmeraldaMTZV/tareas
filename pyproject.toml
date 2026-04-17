@@ -5,6 +5,8 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
+    "bcrypt>=5.0.0",
+    "dotenv>=0.9.9",
     "flet>=0.82.2",
     "mysql-connector-python>=9.6.0",
     "pydantic[email]>=2.13.1",
