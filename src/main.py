@@ -13,7 +13,8 @@ def start(page: ft.Page):
 
         if page.route == "/":
             page.add(ft.Text("Caso 1"))
-            page.views.append(LoginView(page, auth_ctrl))
+            page.views.append(LoginView(page, auth_ctrl))  
+            
         elif page.route == "/dashboard":
             page.views.append(dashboardView(page, task_ctrl))
         
@@ -23,6 +24,20 @@ def start(page: ft.Page):
             )
 
         page.update()
+        
+        def view_pop():
+            if len(page.views)>1:
+                page.views.pop()
+                top_view = page.views [-1]
+                page.go (top_view.route)
+                
+                page.on_route_change = route_change
+                page.on_view_pop = view_pop
+                
+                if page.route == "/" :
+                    route_change(None)
+                else:
+                    page.go("/")
 
     page.on_route_change = route_change
     page.go("/")

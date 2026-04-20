@@ -5,6 +5,7 @@ def LoginView(page, auth_controller):
     pass_input = ft.TextField(label="Contraseña", password=True, can_reveal_password=True, width=350, border_radius=10)
 
     def login_click(e):
+        
         user, msg = auth_controller.login(email_input.value, pass_input.value)
         if user:
             page.session.set("user", user) 
@@ -16,6 +17,7 @@ def LoginView(page, auth_controller):
 
     return ft.View("/", [
         ft.AppBar(title=ft.Text("SIGE - Login"), bgcolor=ft.Colors.BLUE_GREY_900, color="white"),
+        
         ft.Column([
             ft.Icon(ft.Icons.LOCK_PERSON, size=50, color=ft.colors.BLUE),
             ft.Text("Acceso al Sistema", size=20, weight="bold"),
