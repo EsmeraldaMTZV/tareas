@@ -32,7 +32,9 @@ def main(page: ft.Page):
 
     pagina_explorar = ft.Column(
         [
-            ft.Icon(ft.Icons.EXPLORE, size=60),
+            ft.Icon(ft.Icons.EXPLORE, 
+                    size=60,
+                    color=ft.Colors.GREEN),
             ft.Text("Explorar contenido", size=25)
         ],
         alignment=ft.MainAxisAlignment.CENTER,
@@ -41,9 +43,10 @@ def main(page: ft.Page):
 
     pagina_perfil = ft.Column(
         [
-            ft.Icon(ft.Icons.PERSON, size=60),
-            ft.Text("Perfil del usuario", size=25),
-            ft.Text("admin@gmail.com")
+            ft.Icon(ft.Icons.PERSON, 
+                    size=60,
+                    color=ft.Colors.GREEN),
+            ft.Text("Admin", size=25),
         ],
         alignment=ft.MainAxisAlignment.CENTER,
         horizontal_alignment=ft.CrossAxisAlignment.CENTER
@@ -56,23 +59,18 @@ def main(page: ft.Page):
             contenido.content = pagina_explorar
         elif e.control.selected_index == 2:
             contenido.content = pagina_perfil
-
         page.update()
 
     def login(e):
-
         if correo.value == "" or contraseña.value == "":
-            mensaje.value = "Error: Debes llenar todos los campos"
+            mensaje.value = "Debes llenar todos los campos"
             mensaje.color = "red"
             page.update()
             return
 
         if correo.value == usuario_valido and contraseña.value == password_valido:
-
             page.clean()
-
             contenido.content = pagina_inicio
-
             page.add(
                 ft.Column(
                     [
@@ -87,6 +85,7 @@ def main(page: ft.Page):
                 destinations=[
                     ft.NavigationBarDestination(
                         icon=ft.Icons.HOME,
+                        
                         label="Inicio"
                     ),
                     ft.NavigationBarDestination(
@@ -102,11 +101,15 @@ def main(page: ft.Page):
             )
 
             page.update()
-
         else:
             mensaje.value = "Correo o contraseña incorrectos"
             mensaje.color = "red"
             page.update()
+
+    def recuperar_password(e):
+        mensaje.value = "Se ha enviado un email para la recuperacion de su contraseña."
+        mensaje.color = "blue"
+        page.update()
 
     icono = ft.Icon(icon=ft.Icons.PERSON, size=60)
 
@@ -114,7 +117,7 @@ def main(page: ft.Page):
         width=350,
         padding=30,
         border_radius=10,
-        bgcolor="grey200",
+        bgcolor="Grey200",
         content=ft.Column(
             horizontal_alignment=ft.CrossAxisAlignment.CENTER,
             spacing=15,
@@ -129,9 +132,8 @@ def main(page: ft.Page):
                 ),
                 mensaje,
                 ft.TextButton(
-                    content=ft.Text("¿Olvidaste tu contraseña?")
-                    
-                    
+                    content=ft.Text("¿Olvidaste tu contraseña?"),
+                    on_click=recuperar_password
                 )
             ]
         )
