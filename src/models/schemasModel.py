@@ -16,3 +16,14 @@ class TareaSchema(BaseModel):
     prioridad: str = "media"
     clasificacion: str = "personal"
     
+class UsuarioFormSchema(BaseModel):
+    nombre: str = Field(min_lenght=2, max_lenght=30)
+    apellido: str = Field(min_lenght=8, max_lenght=30)
+    email: EmailStr
+    password : str = Field (min_lenght=8)
+    telefono : Optional[str] =Field(None, min_lenght=7,max_lenght=15)
+    foto : Optional[str] =Field(None,max_lenght=255)
+    
+    activo: bool = True
+    fecha_creacion: datetime = field(None, min_lenght=7,max_lenght=15)
+    fecha_modificacion: Optional[datetime] = None
