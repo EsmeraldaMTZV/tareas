@@ -20,6 +20,8 @@ def main(page: ft.Page):
     mensaje = ft.Text("")
 
     contenido = ft.Container()
+    
+    
 
     pagina_inicio = ft.Column(
         [

@@ -32,6 +32,7 @@ CREATE TABLE `tareas` (
   `id_usuario` int(10) UNSIGNED NOT NULL,
   `titulo` varchar(200) NOT NULL,
   `descripcion` text DEFAULT NULL,
+  `estado` text DEFAULT `pendiente` NOT NULL,
   `fecha_creacion` timestamp NOT NULL DEFAULT current_timestamp(),
   `fecha_limite` date DEFAULT NULL,
   `hora_limite` time DEFAULT NULL,

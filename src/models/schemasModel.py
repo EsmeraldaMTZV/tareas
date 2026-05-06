@@ -1,5 +1,7 @@
 from pydantic import BaseModel, EmailStr, Field
 from typing import Optional
+from datetime import datetime
+
 
 class UsuarioSchema(BaseModel):
     nombre: str = Field(min_length=8, max_length=100)
@@ -25,5 +27,5 @@ class UsuarioFormSchema(BaseModel):
     foto : Optional[str] =Field(None,max_lenght=255)
     
     activo: bool = True
-    fecha_creacion: datetime = field(None, min_lenght=7,max_lenght=15)
+    fecha_creacion: datetime = Field(None, min_lenght=7,max_lenght=15)
     fecha_modificacion: Optional[datetime] = None
